@@ -1,0 +1,71 @@
+.circle{
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	border-radius: 50px; 
+	border: 1px solid white;
+	margin:  0 auto;
+}
+div.circle:hover{
+	background-color: #D40909;
+	cursor: pointer;
+}
+div.circle:active{
+	background-color: #BF1E1E;
+	width: 95px;
+	height: 95px;
+	border-radius: 47.5px; 
+}
+table{
+/* 	border: black; */
+	background: grey;
+	color: white; 
+	font-size: 2em;
+	table-layout: fixed;
+}
+table tr td{
+	text-align: center;
+	width: 200px;
+	height: 120px;
+}
+ 
+ table tr td#one:hover, table tr td#two:hover{
+	background-color: #696565;
+	cursor:pointer;
+ }
+  table tr td#one:active, table tr td#two:active{
+	background-color: #545252;
+	cursor:pointer;
+ }
+#box{  
+	margin:0 55%  ;
+	 width: 180px;
+	 height: 180px;
+	 z-index:1;
+}
+#box img{
+	width:100%;  
+}
+#box img:hover{
+	width:100%;   
+}
+#money{
+	width: 200px;
+}
+#money img{
+	width: 30%;
+}
+#money img:hover{
+	cursor: pointer; 
+}
+#message{
+	width: 15%;
+}
+#sugar{
+	width:15%;
+}
+
+#changeMoney img{
+	width: 30%;
+}
+ 

@@ -1,0 +1,174 @@
+<!DOCTYPE> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="coffee.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<table align="center" cellspacing="0" cellpadding="4" border="1"  >
+ 
+<tr>
+	<td id="one" onClick="sugarPlus()">Sugar +</td>
+	<td id="two" onClick="sugarMinus()">Sugar -</td>	 
+	<td><p>Coffee<br> espresso<br> 5 UAH </p></td>
+	<td><div class="circle" onClick="espresso(amount)">
+	</div></td>
+</tr>
+
+<tr>
+  
+	<td  rowspan="3" colspan="2"  style="background-color:#AFECEC; ">
+	<div id="screen" style="color:black; font-family: monospace;">
+	 Total amount:  <input id="message" type="text" value="0" disabled> <br> 
+	Sugar: <input id="sugar" type="text" value="0" disabled><br><span id="wish">Choose a drink</span></div>
+	</td>	
+	<td><p>Coffee<br> americano <br> 6 UAH</p></td>
+	<td><div class="circle" onClick="milk(amount)">
+	</div></td>
+	
+</tr>
+
+<tr>
+	 
+	<td><p>Coffee <br>with milk <br> 6 UAH</p></td>
+	<td><div class="circle" onClick="milk(amount)">
+	</div></td>
+</tr>
+
+<tr>
+	 
+	<td><p>Coffee<br> cappuccino <br> 7 UAH</p></td>
+	<td><div class="circle" onClick="cappuccino(amount)">
+	</div></td>
+</tr>
+ 
+<tr >
+<td ><div id="box" onClick="take()">
+		</div> </td>
+	<td style="border-left: grey;"> 
+		
+	</td> 
+	<td id ="changeText" style="background-color:black;" >Get change <input type="text" id="change" disabled><div id="changeMoney" onClick="takeChange()"></div></td>
+	<td style="background-color:black;">
+	<div id="money">
+	<p>Pay money</p>
+	<img id="ten" src="10gr.jpg" onClick="moneyTen()">
+	<img id="five" src="5gr.png" onClick="moneyFive()">
+	<img id="two" src="2gr.jpg" onClick="moneyTwo()">
+	<img id="one" src="1gr.png" onClick="moneyOne()">	
+	<img id="onemet" src="1grzhel.png" onClick="moneyOne()">
+	<img id="fifty" src="50kop.png" onClick="moneyFifty()">
+
+	</div>
+	 </td>
+	
+</tr>
+</table>
+
+<script>
+	var amount=0;
+	var sugar=0;
+	var change=0;
+	var price=0;	
+	var w=document.getElementById('wish'); 
+	 
+	function take(){
+	    document.getElementById('box').innerHTML=null;
+		w.innerHTML="Choose a drink";
+	}
+	function takeChange(){ 
+	 	document.getElementById('changeMoney').innerHTML=null;	 
+		document.getElementById('change').value=null;	 
+	}
+	function makeCoffee(price){
+	amount=document.getElementById('message').value;
+	if (amount>=price) {
+	var o=document.createElement('img');
+    o.src='paper.png';
+    document.getElementById('box').appendChild(o);
+	getChange(); 
+	amount=0;
+	document.getElementById('message').value=amount;
+	w.innerHTML="Enjoy your drink!"; 
+	document.getElementById('sugar').value=0;
+	sugar=0;
+	}	
+	}
+	function getChange(){
+	change = amount-price;
+	if (change>0){
+	document.getElementById('change').value = change + " UAH";
+	if(change%1==0){
+		for (var i=0; i<change;i++){
+		var moneyChange=document.createElement('img'); 
+		moneyChange.src='1grzhel.png';
+		document.getElementById('changeMoney').appendChild(moneyChange);		
+		} 
+	}
+	else{
+		var whole = change - change%1;
+		for (var i=0; i<whole;i++){
+		var moneyChange=document.createElement('img');
+		moneyChange.src='1grzhel.png';
+		document.getElementById('changeMoney').appendChild(moneyChange);
+		}
+		var fiftychange=document.createElement('img');
+		fiftychange.src='50kop.png';
+		document.getElementById('changeMoney').appendChild(fiftychange);
+	}
+	}
+	else{
+	document.getElementById('change').value = null;
+	}
+	}
+	function espresso(amount){
+	 price=5;	 
+	 makeCoffee(price);
+	}
+	function milk(amount){
+	price=6;
+	makeCoffee(price);
+	}
+	function cappuccino(amount){
+	price=7;
+	makeCoffee(price);
+	}
+	
+	function money(number){
+		amount=parseFloat(document.getElementById('message').value,10);
+		amount+=number; 
+		document.getElementById('message').value=amount;
+	}
+	function moneyTen(){
+		money(10);
+	}
+		function moneyFive(){
+		money(5);
+	}
+		function moneyTwo(){
+		money(2);
+	}
+		function moneyOne(){
+		money(1);
+	}
+		function moneyFifty(){
+		money(0.5);
+	}
+	function sugarPlus(){
+		if(sugar<3){
+		sugar++;
+		document.getElementById('sugar').value=sugar;
+		
+		}
+	}
+	function sugarMinus(){
+	if(sugar>0){
+		sugar--;
+		document.getElementById('sugar').value=sugar;
+		}
+	}
+
+</script>
+ 
+</body>
+</html>
