@@ -1,2 +1,2 @@
 # projects
-Web development
+Task: create coffee-machine 
